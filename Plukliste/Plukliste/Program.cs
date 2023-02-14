@@ -17,9 +17,9 @@ class PluklisteProgram
             return;
         }
         //ACT
+        var currentFile = -1;
         while (readKey != 'Q')
-        {
-            var currentFile = -1;
+        { 
             filesList = Directory.EnumerateFiles("export").ToList();
             if (filesList.Count == 0)
             {
