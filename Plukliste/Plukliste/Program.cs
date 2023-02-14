@@ -7,10 +7,8 @@ class PluklisteProgram
     static void Main()
     {
         //Arrange
-        char readFirstCharKey = ' ';
+        char readKey = ' ';
         List<string> filesList;
-        var index = -1;
-        var standardColor = Console.ForegroundColor;
         Directory.CreateDirectory("import");
         if (!Directory.Exists("export"))
         {
@@ -19,8 +17,9 @@ class PluklisteProgram
             return;
         }
         //ACT
-        while (readFirstCharKey != 'Q')
+        while (readKey != 'Q')
         {
+            var currentFile = -1;
             filesList = Directory.EnumerateFiles("export").ToList();
             if (filesList.Count == 0)
             {
@@ -28,19 +27,29 @@ class PluklisteProgram
             }
             else
             {
-                if (index == -1) index = 0;
-                Console.WriteLine($"Plukliste {index + 1} af {filesList.Count}");
-                Console.WriteLine($"\nfile: {filesList[index]}");
-                Pluklist? plukliste = ReadFiles(filesList, index);
+                if (currentFile == -1) currentFile = 0;
+                Console.WriteLine($"Plukliste {currentFile + 1} af {filesList.Count}");
+                Console.WriteLine($"\nfile: {filesList[currentFile]}");
+                Pluklist? plukliste = ReadFiles(filesList, currentFile);
                 PrintPlukliste(plukliste);
             }
             //Print options
-            PrintCharOptions(filesList, index, standardColor);
-            readFirstCharKey = Console.ReadKey().KeyChar;
-            if (char.IsLower(readFirstCharKey)) readFirstCharKey = char.ToUpper(readFirstCharKey);
+            PrintPluklisteOptions(filesList, currentFile);
+            readKey = Console.ReadKey().KeyChar;
+            if (char.IsLower(readKey)) readKey = char.ToUpper(readKey);
             Console.Clear();
-            InputChar(readFirstCharKey, ref filesList, ref index, standardColor);
+            SelectedKeyChar(readKey, ref filesList, ref currentFile);
         }
+    }
+
+    private static Pluklist? ReadFiles(List<string> files, int index)
+    {
+        FileStream file;
+        file = File.OpenRead(files[index]);
+        System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Pluklist));
+        Pluklist? plukliste = (Pluklist?)xmlSerializer.Deserialize(file);
+        file.Close();
+        return plukliste;
     }
 
     private static void PrintPlukliste(Pluklist? plukliste)
@@ -59,8 +68,43 @@ class PluklisteProgram
         }
     }
 
-    private static void InputChar(char readKey, ref List<string> files, ref int index, ConsoleColor standardColor)
+    private static void PrintDisplayOptions(ConsoleColor standardColor, string options)
     {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write(options[0]);
+        Console.ForegroundColor = standardColor;
+        Console.WriteLine(options.Remove(0, 1));
+    }
+
+    private static void PrintPluklisteOptions(List<string> files, int index)
+    {
+        var standardColor = Console.ForegroundColor;
+        Console.WriteLine("\n\nOptions:");
+        PrintDisplayOptions(standardColor, "Quit");
+        if (index >= 0)
+        {
+            PrintDisplayOptions(standardColor, "Afslut plukeseddel");
+        }
+        if (index > 0)
+        {
+            PrintDisplayOptions(standardColor, "Forrige plukeseddel");
+        }
+        if (index < files.Count - 1)
+        {
+            PrintDisplayOptions(standardColor, "Næste plukeseddel");
+        }
+        PrintDisplayOptions(standardColor, "Genindlæs plukeseddel");
+    }
+
+    private static void MoveFiles(List<string> files, int index)
+    {
+        var filewithoutPath = files[index].Substring(files[index].LastIndexOf('\\'));
+        File.Move(files[index], string.Format(@"import\\{0}", filewithoutPath));
+    }
+
+    private static void SelectedKeyChar(char readKey, ref List<string> files, ref int index)
+    {
+        var standardColor = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Red;
         switch (readKey)
         {
@@ -84,48 +128,5 @@ class PluklisteProgram
                 break;
         }
         Console.ForegroundColor = standardColor;
-    }
-
-    private static void PrintCharOptions(List<string> files, int index, ConsoleColor standardColor)
-    {
-        Console.WriteLine("\n\nOptions:");
-        PrintDisplayOptions(standardColor, "Quit");
-        if (index >= 0)
-        {
-            PrintDisplayOptions(standardColor, "Afslut plukeseddel");
-        }
-        if (index > 0)
-        {
-            PrintDisplayOptions(standardColor, "Forrige plukeseddel");
-        }
-        if (index < files.Count - 1)
-        {
-            PrintDisplayOptions(standardColor, "Næste plukeseddel");
-        }
-        PrintDisplayOptions(standardColor, "Genindlæs plukeseddel");
-    }
-
-    private static Pluklist? ReadFiles(List<string> files, int index)
-    {
-        FileStream file;
-        file = File.OpenRead(files[index]);
-        System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Pluklist));
-        Pluklist? plukliste = (Pluklist?)xmlSerializer.Deserialize(file);
-        file.Close();
-        return plukliste;
-    }
-
-    private static void MoveFiles(List<string> files, int index)
-    {
-        var filewithoutPath = files[index].Substring(files[index].LastIndexOf('\\'));
-        File.Move(files[index], string.Format(@"import\\{0}", filewithoutPath));
-    }
-
-    private static void PrintDisplayOptions(ConsoleColor standardColor, string options)
-    {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(options[0]);
-        Console.ForegroundColor = standardColor;
-        Console.WriteLine(options.Remove(0, 1));
     }
 }
