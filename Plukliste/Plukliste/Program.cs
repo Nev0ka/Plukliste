@@ -1,4 +1,6 @@
 ﻿//Eksempel på funktionel kodning hvor der kun bliver brugt et model lag
+using Plukliste.Classes;
+
 namespace Plukliste;
 
 class PluklisteProgram
@@ -94,6 +96,7 @@ class PluklisteProgram
             PrintDisplayOptions(standardColor, "Næste plukeseddel");
         }
         PrintDisplayOptions(standardColor, "Genindlæs plukeseddel");
+        PrintDisplayOptions(standardColor, "Print vejledninger");
     }
 
     private static void MoveFiles(List<string> files, int index)
@@ -126,7 +129,23 @@ class PluklisteProgram
                 files.Remove(files[index]);
                 if (index == files.Count) index--;
                 break;
+            case 'P':
+                PrintFiles(index, files);
+                break;
         }
         Console.ForegroundColor = standardColor;
+    }
+
+    private static void PrintFiles(int index, List<string> files)
+    {
+        Pluklist? pluklist = ReadFiles(files, index);
+        HandleHTML HTMLFileHandler = new HandleHTML(pluklist, files[index]);
+        foreach (var item in pluklist.Lines) 
+        {
+            if (item.ProductID.Contains("PRINT"))
+            {
+                HTMLFileHandler.PrintHTMLFile(item.ProductID);
+            }
+        }
     }
 }
