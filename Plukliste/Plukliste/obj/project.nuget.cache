@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "xta3nUktJ2BiorLnd5wi9khYNrDF4ryCqr3ARG74eDavK6iZY9gB7Znv4KXh0cC8PXzTiAKRm8PsjQyvpfJUSg==",
+  "dgSpecHash": "i2kPRJumtWC9bsM1q/IuNidcamqkzFtfdTCMhz+GVlfHAgc/js0AzTAeDiGKY8+iZcVGSv/5h0nFH2JIdV085A==",
   "success": true,
   "projectFilePath": "C:\\Users\\HFGF\\Desktop\\GF 1\\Plukliste\\Plukliste\\Plukliste.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\servicestack.text\\6.6.0\\servicestack.text.6.6.0.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
