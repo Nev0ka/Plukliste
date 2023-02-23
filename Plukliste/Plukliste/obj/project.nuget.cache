@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i2kPRJumtWC9bsM1q/IuNidcamqkzFtfdTCMhz+GVlfHAgc/js0AzTAeDiGKY8+iZcVGSv/5h0nFH2JIdV085A==",
+  "dgSpecHash": "URPiiBikxg99fNplp4m1NGdjwxRC6vlBwdjllqD7jJb/IYyPweK8YpNwQ/9EwoL2XvkK1n4aGHiHSOqPGapgGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HFGF\\Desktop\\GF 1\\Plukliste\\Plukliste\\Plukliste.csproj",
+  "projectFilePath": "C:\\Users\\HFGF\\Desktop\\Plukliste\\Plukliste\\Plukliste\\Plukliste.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\servicestack.text\\6.6.0\\servicestack.text.6.6.0.nupkg.sha512",
