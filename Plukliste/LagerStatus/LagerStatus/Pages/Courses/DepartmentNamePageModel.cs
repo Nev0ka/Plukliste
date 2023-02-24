@@ -17,8 +17,8 @@ namespace LagerStatus.Pages.Courses
                                    select d;
 
             DepartmentNameSL = new SelectList(departmentsQuery.AsNoTracking(),
-                nameof(Department.DepartmentID),
-                nameof(Department.Name),
+                nameof(Models.Department.DepartmentID),
+                nameof(Models.Department.Name),
                 selectedDepartment);
         }
     }

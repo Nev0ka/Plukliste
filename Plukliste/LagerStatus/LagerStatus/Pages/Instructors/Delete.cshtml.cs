@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LagerStatus.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using LagerStatus.Data;
-using LagerStatus.Models;
 
 namespace LagerStatus.Pages.Instructors
 {
@@ -20,7 +15,7 @@ namespace LagerStatus.Pages.Instructors
         }
 
         [BindProperty]
-      public Instructor Instructor { get; set; }
+        public Instructor Instructor { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,7 +30,7 @@ namespace LagerStatus.Pages.Instructors
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Instructor = instructor;
             }
@@ -48,14 +43,24 @@ namespace LagerStatus.Pages.Instructors
             {
                 return NotFound();
             }
-            var instructor = await _context.Instructors.FindAsync(id);
 
-            if (instructor != null)
+            Instructor instructor = await _context.Instructors
+                .Include(i => i.Courses)
+                .SingleAsync(i => i.ID == id);
+
+            if (instructor == null)
             {
-                Instructor = instructor;
-                _context.Instructors.Remove(Instructor);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
+
+            var departments = await _context.Departments
+                .Where(d => d.InstructorID == id)
+                .ToListAsync();
+            departments.ForEach(d => d.InstructorID = null);
+
+            _context.Instructors.Remove(instructor);
+
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
