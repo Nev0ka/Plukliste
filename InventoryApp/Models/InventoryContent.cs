@@ -1,4 +1,4 @@
-﻿namespace Reference
+﻿namespace InventoryApp.Models
 {
     public class InventoryContent
     {

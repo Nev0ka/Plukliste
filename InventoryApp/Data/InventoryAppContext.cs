@@ -8,7 +8,7 @@ public class InventoryAppContext : DbContext
     {
     }
 
-    public DbSet<InventoryApp.Models.InventoryContent> InventoryContent { get; set; }
+    public DbSet<InventoryContent> InventoryContent { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

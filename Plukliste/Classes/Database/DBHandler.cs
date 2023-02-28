@@ -4,14 +4,15 @@ namespace Plukliste.Classes.Database
 {
     internal class DBHandler
     {
-        public List<InventoryContent> GetContent { get { return GetContent.ToList(); } }
-        private InventoryContent Content;
+        public List<InventoryContent> GetContent { get { return ContentList.ToList(); } }
+        private InventoryContent Content = new();
         List<InventoryContent> ContentList;
 
-        private static string connectString = "Server=192.168.52.128;" + "Database=InventoryApp" + "Uid=sa;" + "Pwd=1234";
+        private static string connectString = "Server=192.168.52.128;" + "Database=InventoryApp;" + "Uid=sa;" + "Pwd=1234";
 
-        public void updateDB(int stock, string productName, string productId)
+        public void updateDB(int id, int stock, string productName, string productId)
         {
+            Content.ID = id;
             Content.Stock = stock;
             Content.ProductName = productName;
             Content.ProductId = productId;
@@ -21,7 +22,7 @@ namespace Plukliste.Classes.Database
         {
             using (SqlConnection conn = new(connectString))
             {
-                string Query = $"INSERT INTO [dbo].[InventoryContent]([Stock],[ProductName],[ProductId]) VALUES('{Content.Stock}','{Content.ProductName}','{Content.ProductId}')";
+                string Query = $"INSERT INTO [dbo].[InventoryContent]([Stock],[ProductName],[ProductID]) VALUES('{Content.Stock}','{Content.ProductName}','{Content.ProductId}')";
                 SqlCommand command = new(Query, conn);
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -33,7 +34,7 @@ namespace Plukliste.Classes.Database
         {
             using (SqlConnection conn = new(connectString))
             {
-                string Query = $"UPDATE [dbo].[InventoryContent] SET [Stock] = '{Content.Stock}',[ProductName] = '{Content.ProductName}', [ProductId] = '{Content.ProductId}' WHERE [ID] = '{Content.ID}'";
+                string Query = $"UPDATE [dbo].[InventoryContent] SET [Stock] = '{Content.Stock}',[ProductName] = '{Content.ProductName}', [ProductID] = '{Content.ProductId}' WHERE [ID] = '{Content.ID}'";
                 SqlCommand command = new(Query, conn);
                 conn.Open();
                 command.ExecuteNonQuery();
@@ -41,11 +42,12 @@ namespace Plukliste.Classes.Database
             }
         }
 
-        public void ReadToDb()
+        public void ReadFromDb()
         {
+            ContentList = new();
             using (SqlConnection conn = new(connectString))
             {
-                string Query = $"SELECT [ID],[Stock],[ProductName],[ProductId] FROM [dbo].[InventoryContent]";
+                string Query = $"SELECT [ID],[Stock],[ProductName],[ProductID] FROM [dbo].[InventoryContent]";
                 SqlCommand command = new(Query, conn);
                 conn.Open();
                 

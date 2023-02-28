@@ -1,5 +1,7 @@
 ﻿using Plukliste.Classes.FileHandling;
+using Plukliste.Classes.FileHandling.Read;
 using Plukliste.Classes.FileHandling.Write;
+using static System.Net.WebRequestMethods;
 
 namespace Plukliste.Classes.ConsoleHandling.UserInput
 {
@@ -7,6 +9,8 @@ namespace Plukliste.Classes.ConsoleHandling.UserInput
     {
         public void SelectedKeyChar(char readKey, ref List<string> files, ref int index)
         {
+            FilesToWeb FTW = new FilesToWeb();
+            Pluklist pluklist = FTW.Deserializer(files, index);
             Refresh refresh = new Refresh();
             Previous previous = new Previous();
             Next next = new Next();
@@ -26,7 +30,7 @@ namespace Plukliste.Classes.ConsoleHandling.UserInput
                     next.nextInterface(files,ref index);
                     break;
                 case 'A':
-                    end.endInterface(ref files, ref index);
+                    end.endInterface(ref files, ref index, pluklist);
                     break;
                 case 'P':
                     printFiles.PrintFilesToWeb(index, files);
