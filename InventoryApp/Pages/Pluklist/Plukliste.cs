@@ -1,19 +1,23 @@
 ﻿namespace InventoryApp.Pages.Pluklist;
 public class Pluklist
 {
-    public string? Name;
-    public string? Forsendelse;
-    public string? Adresse;
+    public int? Id { get; set; }
+    public string? Name { get; set; }
+    public string? Forsendelse { get; set; }
+    public string? Adresse { get; set; }
     public List<Item> Lines = new List<Item>();
     public void AddItem(Item item) { Lines.Add(item); }
 }
 
 public class Item
 {
-    public string ProductID;
-    public string Title;
-    public ItemType Type;
-    public int Amount;
+    public int Id { get; set; }
+    public string ProductID { get; set; }
+    public string Title { get; set; }
+    public ItemType Type { get; set; }
+    public int Amount { get; set; }
+    public int PluklistId { get; set; }
+    public Pluklist Pluklist { get; set; }
 }
 
 public enum ItemType

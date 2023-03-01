@@ -7,26 +7,26 @@
 
 <h1>Create</h1>
 
-<h4>InventoryContent</h4>
+<h4>PluklistContent</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="InventoryContent.Stock" class="control-label"></label>
-                <input asp-for="InventoryContent.Stock" class="form-control" />
-                <span asp-validation-for="InventoryContent.Stock" class="text-danger"></span>
+                <label asp-for="PluklistContent.Name" class="control-label"></label>
+                <input asp-for="PluklistContent.Name" class="form-control" />
+                <span asp-validation-for="PluklistContent.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InventoryContent.ProductName" class="control-label"></label>
-                <input asp-for="InventoryContent.ProductName" class="form-control" />
-                <span asp-validation-for="InventoryContent.ProductName" class="text-danger"></span>
+                <label asp-for="PluklistContent.Forsendelse" class="control-label"></label>
+                <input asp-for="PluklistContent.Forsendelse" class="form-control" />
+                <span asp-validation-for="PluklistContent.Forsendelse" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InventoryContent.ProductId" class="control-label"></label>
-                <input asp-for="InventoryContent.ProductId" class="form-control" />
-                <span asp-validation-for="InventoryContent.ProductId" class="text-danger"></span>
+                <label asp-for="PluklistContent.Adresse" class="control-label"></label>
+                <input asp-for="PluklistContent.Adresse" class="form-control" />
+                <span asp-validation-for="PluklistContent.Adresse" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -14,23 +14,23 @@ namespace InventoryApp.Pages.Pluklist
             _context = context;
         }
 
-        public InventoryContent InventoryContent { get; set; }
+        public PluklistContent PluklistContent { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.InventoryContent == null)
+            if (id == null || _context.PluklistContent == null)
             {
                 return NotFound();
             }
 
-            var inventorycontent = await _context.InventoryContent.FirstOrDefaultAsync(m => m.ID == id);
-            if (inventorycontent == null)
+            var pluklistcontent = await _context.PluklistContent.FirstOrDefaultAsync(m => m.ID == id);
+            if (pluklistcontent == null)
             {
                 return NotFound();
             }
             else
             {
-                InventoryContent = inventorycontent;
+                PluklistContent = pluklistcontent;
             }
             return Page();
         }

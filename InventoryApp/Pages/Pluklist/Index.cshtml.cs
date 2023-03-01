@@ -1,4 +1,4 @@
-﻿using InventoryApp.Models;
+﻿  using InventoryApp.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,14 +13,33 @@ namespace InventoryApp.Pages.Pluklist
             _context = context;
         }
 
-        public IList<InventoryContent> InventoryContent { get; set; } = default!;
+        public PluklistData pluklistData { get; set; }
+        public int PluklistId { get; set; }
+        public int ItemId { get; set; }
 
-        public async Task OnGetAsync()
+        public IList<PluklistContent> PluklistContent { get; set; } = default!;
+
+        public async Task OnGetAsync(int? id)
         {
-            if (_context.InventoryContent != null)
+            pluklistData = new PluklistData();
+            pluklistData.Pluklists = (IEnumerable<Pluklist>)await _context.PluklistContent
+                .Include(i => i.Lines)
+                .ToListAsync();
+
+            if (id != null)
             {
-                InventoryContent = await _context.InventoryContent.ToListAsync();
+                PluklistId = id.Value;
+                Pluklist instructor = pluklistData.Pluklists.Where(i => i.Id == id.Value).Single();
+                pluklistData.Item = instructor.Lines;
             }
         }
-    }
+
+            //public async Task OnGetAsync()
+            //{
+            //    if (_context.PluklistContent != null)
+            //    {
+            //        PluklistContent = await _context.PluklistContent.ToListAsync();
+            //    }
+            //}
+        }
 }

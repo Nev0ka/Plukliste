@@ -19,7 +19,7 @@ namespace InventoryApp.Pages.Pluklist
         }
 
         [BindProperty]
-        public InventoryContent InventoryContent { get; set; }
+        public PluklistContent PluklistContent { get; set; }
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -30,7 +30,7 @@ namespace InventoryApp.Pages.Pluklist
                 return Page();
             }
 
-            _context.InventoryContent.Add(InventoryContent);
+            _context.PluklistContent.Add(PluklistContent);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

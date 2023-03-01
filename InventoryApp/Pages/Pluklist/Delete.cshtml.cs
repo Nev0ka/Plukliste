@@ -15,40 +15,40 @@ namespace InventoryApp.Pages.Pluklist
         }
 
         [BindProperty]
-        public InventoryContent InventoryContent { get; set; }
+        public PluklistContent PluklistContent { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.InventoryContent == null)
+            if (id == null || _context.PluklistContent == null)
             {
                 return NotFound();
             }
 
-            var inventorycontent = await _context.InventoryContent.FirstOrDefaultAsync(m => m.ID == id);
+            var pluklistcontent = await _context.PluklistContent.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (inventorycontent == null)
+            if (pluklistcontent == null)
             {
                 return NotFound();
             }
             else
             {
-                InventoryContent = inventorycontent;
+                PluklistContent = pluklistcontent;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.InventoryContent == null)
+            if (id == null || _context.PluklistContent == null)
             {
                 return NotFound();
             }
-            var inventorycontent = await _context.InventoryContent.FindAsync(id);
+            var pluklistcontent = await _context.PluklistContent.FindAsync(id);
 
-            if (inventorycontent != null)
+            if (pluklistcontent != null)
             {
-                InventoryContent = inventorycontent;
-                _context.InventoryContent.Remove(InventoryContent);
+                PluklistContent = pluklistcontent;
+                _context.PluklistContent.Remove(PluklistContent);
                 await _context.SaveChangesAsync();
             }
 

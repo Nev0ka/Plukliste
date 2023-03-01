@@ -15,21 +15,21 @@ namespace InventoryApp.Pages.Pluklist
         }
 
         [BindProperty]
-        public InventoryContent InventoryContent { get; set; } = default!;
+        public PluklistContent PluklistContent { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.InventoryContent == null)
+            if (id == null || _context.PluklistContent == null)
             {
                 return NotFound();
             }
 
-            var inventorycontent = await _context.InventoryContent.FirstOrDefaultAsync(m => m.ID == id);
-            if (inventorycontent == null)
+            var pluklistcontent = await _context.PluklistContent.FirstOrDefaultAsync(m => m.ID == id);
+            if (pluklistcontent == null)
             {
                 return NotFound();
             }
-            InventoryContent = inventorycontent;
+            PluklistContent = pluklistcontent;
             return Page();
         }
 
@@ -42,7 +42,7 @@ namespace InventoryApp.Pages.Pluklist
                 return Page();
             }
 
-            _context.Attach(InventoryContent).State = EntityState.Modified;
+            _context.Attach(PluklistContent).State = EntityState.Modified;
 
             try
             {
@@ -50,7 +50,7 @@ namespace InventoryApp.Pages.Pluklist
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InventoryContentExists(InventoryContent.ID))
+                if (!PluklistContentExists(PluklistContent.ID))
                 {
                     return NotFound();
                 }
@@ -63,9 +63,9 @@ namespace InventoryApp.Pages.Pluklist
             return RedirectToPage("./Index");
         }
 
-        private bool InventoryContentExists(int id)
+        private bool PluklistContentExists(int id)
         {
-            return _context.InventoryContent.Any(e => e.ID == id);
+            return _context.PluklistContent.Any(e => e.ID == id);
         }
     }
 }
