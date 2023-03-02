@@ -1,10 +1,8 @@
-﻿using InventoryApp.Pages.Pluklist;
-
-namespace InventoryApp.Models
+﻿namespace InventoryApp.Models
 {
     public class PluklistData
     {
-        public IEnumerable<Pluklist> Pluklists { get; set; }
-        public IEnumerable<Item> Item { get; set; }
+        public IEnumerable<PluklistContent> Pluklists { get; set; }
+        public IEnumerable<Items> Items { get; set; }
     }
 }

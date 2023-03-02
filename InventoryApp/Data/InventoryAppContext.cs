@@ -11,12 +11,12 @@ public class InventoryAppContext : DbContext
 
     public DbSet<InventoryContent> InventoryContent { get; set; }
     public DbSet<PluklistContent> PluklistContent { get; set; }
-    public DbSet<Item> Item { get; set; }
+    public DbSet<Items> Items { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<InventoryContent>().ToTable("InventoryContent");
         modelBuilder.Entity<PluklistContent>().ToTable("PluklistContent");
-        modelBuilder.Entity<Item>().ToTable("Item");
+        modelBuilder.Entity<Items>().ToTable("Items");
     }
 }

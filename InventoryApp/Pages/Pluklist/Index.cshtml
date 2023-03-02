@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int?}"
 @model InventoryApp.Pages.Pluklist.IndexModel
 
 @{
@@ -26,29 +26,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.PluklistContent) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Forsendelse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adresse)
-            </td>
-            <td>
-                <a asp-asp-page="/Index" asp-route-id="@item.ID">Select</a>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @if(Model.PluklistContent != null)
+        {
+            @foreach (var item in Model.PluklistContent)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Forsendelse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresse)
+                    </td>
+                    <td>
+                        <a asp-page="/Index" asp-route-id="@item.ID">Select</a>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        
     </tbody>
 </table>
 
-@if (Model.pluklistData.Item != null) 
+@if (Model.pluklistData.Items != null) 
 {
     <h3>Products in selected plukliste</h3>
     <table class="table">
@@ -59,7 +64,7 @@
             <th>Amount</th>
             <th>Type</th>
         </tr>
-        @foreach (var item in Model.pluklistData.Item)
+        @foreach (var item in Model.pluklistData.Items)
         {
             string selectedRow = "";
             if (item.Id == Model.ItemId)
@@ -71,10 +76,10 @@
                     <a asp-page="./Index" asp-route-itemid="@item.Id">Select</a>
                 </td>
                 <td>
-                    @item.ProductID
+                    @item.ProductId
                 </td>
                 <td>
-                    @item.Title
+                    @item.ProductName
                 </td>
                 <td>
                     @item.Amount

@@ -36,7 +36,6 @@ namespace InventoryApp
 
                 var context = services.GetRequiredService<InventoryAppContext>();
                 context.Database.EnsureCreated();
-                DbInitializer.Initialize(context);
             }
 
             app.UseHttpsRedirection();
