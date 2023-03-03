@@ -1,5 +1,4 @@
-﻿using InventoryApp.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 namespace InventoryApp
 {
     public class Program

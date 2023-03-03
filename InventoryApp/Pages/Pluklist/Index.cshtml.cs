@@ -22,23 +22,16 @@ namespace InventoryApp.Pages.Pluklist
         public async Task OnGetAsync(int? id)
         {
             pluklistData = new PluklistData();
-            try
-            {
-                pluklistData.Pluklists = await _context.PluklistContent
-                .Include(i => i.Lines)
-                .ToListAsync();
-            }
-            catch (Exception e)
-            {
-                var s = e.Message;
-            }
+            pluklistData.Pluklists = await _context.PluklistContent
+            .Include(i => i.Items)
+            .ToListAsync();
             PluklistContent = (IList<PluklistContent>)pluklistData.Pluklists;
 
             if (id != null)
             {
                 PluklistId = id.Value;
                 PluklistContent instructor = pluklistData.Pluklists.Where(i => i.ID == id.Value).Single();
-                pluklistData.Items = instructor.Lines;
+                pluklistData.Items = instructor.Items;
             }
         }
 

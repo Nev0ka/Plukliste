@@ -41,7 +41,7 @@
                         @Html.DisplayFor(modelItem => item.Adresse)
                     </td>
                     <td>
-                        <a asp-page="/Index" asp-route-id="@item.ID">Select</a>
+                        <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
                         <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                         <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                         <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
@@ -67,16 +67,16 @@
         @foreach (var item in Model.pluklistData.Items)
         {
             string selectedRow = "";
-            if (item.Id == Model.ItemId)
+            if (item.ID == Model.ItemId)
             {
                 selectedRow = "table-success";
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-itemid="@item.Id">Select</a>
+                    <a asp-page="./Index" asp-route-itemid="@item.ID">Select</a>
                 </td>
                 <td>
-                    @item.ProductId
+                    @item.ProductID
                 </td>
                 <td>
                     @item.ProductName

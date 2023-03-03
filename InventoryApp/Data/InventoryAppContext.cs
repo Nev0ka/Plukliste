@@ -1,5 +1,4 @@
 ﻿using InventoryApp.Models;
-using InventoryApp.Pages.Pluklist;
 using Microsoft.EntityFrameworkCore;
 
 public class InventoryAppContext : DbContext
