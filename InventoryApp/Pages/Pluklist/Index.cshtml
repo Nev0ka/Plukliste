@@ -55,14 +55,17 @@
 
 @if (Model.pluklistData.Items != null) 
 {
-    <h3>Products in selected plukliste</h3>
+    <h3>Products in selected pluklist</h3>
+    <p>
+        <a asp-page="CreateProduct">Create New</a>
+    </p>
     <table class="table">
         <tr>
-            <th></th>
             <th>Product Id</th>
-            <th>Product Title</th>
-            <th>Amount</th>
+            <th>Product Name</th>
             <th>Type</th>
+            <th>Amount</th>
+            <th></th>
         </tr>
         @foreach (var item in Model.pluklistData.Items)
         {
@@ -73,19 +76,20 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-itemid="@item.ID">Select</a>
-                </td>
-                <td>
                     @item.ProductID
                 </td>
                 <td>
                     @item.ProductName
                 </td>
                 <td>
+                    @item.Type
+                </td>
+                <td>
                     @item.Amount
                 </td>
                 <td>
-                    @item.Type
+                    <a asp-page="./EditProduct" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./DeleteProduct" asp-route-id="@item.ID">Delete</a>
                 </td>
             </tr>
         }
