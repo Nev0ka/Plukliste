@@ -11,7 +11,7 @@ public class Pluklist
 public class Item
 {
     public string ProductID;
-    public string Title;
+    public string Name;
     public ItemType Type;
     public int Amount;
 }
@@ -20,6 +20,3 @@ public enum ItemType
 {
     Fysisk, Print
 }
-
-
-

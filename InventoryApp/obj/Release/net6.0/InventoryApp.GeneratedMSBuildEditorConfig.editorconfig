@@ -48,8 +48,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/DeleteProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcRGVsZXRlUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/Details.cshtml]
@@ -58,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGx1a2xpc3RcRWRpdFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HFGF/Desktop/Plukliste/InventoryApp/Pages/Pluklist/Index.cshtml]

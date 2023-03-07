@@ -1,5 +1,7 @@
 ﻿using InventoryApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace InventoryApp.Pages.Pluklist
@@ -29,7 +31,7 @@ namespace InventoryApp.Pages.Pluklist
                 return NotFound();
             }
             Items = items;
-            PopulateProductsDropdownList(_context);
+            ViewData["PluklistContentID"] = new SelectList(_context.PluklistContent, "ID", "ID");
             return Page();
         }
 

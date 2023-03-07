@@ -5,7 +5,7 @@
     ViewData["Title"] = "CreateProduct";
 }
 
-<h1>CreateProduct</h1>
+<h1>Create Product</h1>
 
 <h4>Items</h4>
 <hr />
@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label asp-for="Items.Type" class="control-label"></label>
                 <select asp-for="Items.Type" class="form-control" asp-items="@Model.TypeSL">
-                    <option value=""> Select the type</option>
+                    <option value=""> Select a product</option>
                 </select>
                 <span asp-validation-for="Items.Type" class="text-danger"></span>
             </div>
@@ -33,9 +33,10 @@
                 <span asp-validation-for="Items.Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Items.ProductID" class="control-label"></label>
+                <input type="hidden" asp-for="Items.ProductID"/>
+                @*<label asp-for="Items.ProductID" class="control-label"></label>
                 <input asp-for="Items.ProductID" class="form-control" />
-                <span asp-validation-for="Items.ProductID" class="text-danger"></span>
+                <span asp-validation-for="Items.ProductID" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="Items.PluklistContentID" class="control-label"></label>

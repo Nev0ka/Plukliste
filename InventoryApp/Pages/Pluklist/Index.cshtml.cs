@@ -1,4 +1,6 @@
-﻿using InventoryApp.Models;
+﻿using InventoryApp.DbReader;
+using InventoryApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +21,9 @@ namespace InventoryApp.Pages.Pluklist
 
         public IList<PluklistContent> PluklistContent { get; set; } = default!;
 
-        public async Task OnGetAsync(int? id)
+
+        [HttpGet("{export}")]
+        public async Task OnGetAsync(int? id, bool export)
         {
             pluklistData = new PluklistData();
             pluklistData.Pluklists = await _context.PluklistContent
@@ -32,6 +36,11 @@ namespace InventoryApp.Pages.Pluklist
                 PluklistId = id.Value;
                 PluklistContent instructor = pluklistData.Pluklists.Where(i => i.ID == id.Value).Single();
                 pluklistData.Items = instructor.Items;
+            }
+            if (export)
+            {
+                ReadToJson readToJson = new();
+                readToJson.JsonConverter(pluklistData.Pluklists.First(x => x.ID == id));
             }
         }
 

@@ -36,7 +36,7 @@ namespace Plukliste.Classes
             fileContent = fileContent.Replace("[Name]", pluklist.Name);
             foreach (var item in pluklist.Lines)
             {
-                plukliste += $"{item.Amount} {item.Title} <br>";
+                plukliste += $"{item.Amount} {item.Name} <br>";
             }
             fileContent = fileContent.Replace("[Plukliste]", plukliste);
             return fileContent;
