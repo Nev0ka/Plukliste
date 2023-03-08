@@ -50,7 +50,7 @@ namespace InventoryApp.DbReader
                     case "Fysisk":
                         type = ItemType.Fysisk;
                         break;
-                    case "Print":
+                    case "PRINT":
                         type = ItemType.Print;
                         break;
                     default:

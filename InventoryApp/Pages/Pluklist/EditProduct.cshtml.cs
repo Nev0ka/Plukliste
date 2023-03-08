@@ -9,6 +9,7 @@ namespace InventoryApp.Pages.Pluklist
     public class EditProductModel : ProductSelectlist
     {
         private readonly InventoryAppContext _context;
+        internal static SelectList SelectedProducts { get; set; }
 
         public EditProductModel(InventoryAppContext context)
         {
@@ -32,6 +33,8 @@ namespace InventoryApp.Pages.Pluklist
             }
             Items = items;
             ViewData["PluklistContentID"] = new SelectList(_context.PluklistContent, "ID", "ID");
+            PopulateProductsDropdownList(_context);
+            SelectedProducts = ProductSL;
             return Page();
         }
 
@@ -45,6 +48,16 @@ namespace InventoryApp.Pages.Pluklist
             }
 
             _context.Attach(Items).State = EntityState.Modified;
+
+            foreach (var item in SelectedProducts)
+            {
+                if (Items.ProductName == item.Value)
+                {
+                    Items.ProductName = item.Text;
+                    Items.ProductID = item.Value;
+                    break;
+                }
+            }
 
             try
             {
@@ -61,7 +74,6 @@ namespace InventoryApp.Pages.Pluklist
                     throw;
                 }
             }
-            PopulateProductsDropdownList(_context);
             return RedirectToPage("./Index");
         }
 
