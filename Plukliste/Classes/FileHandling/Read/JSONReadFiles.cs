@@ -12,11 +12,13 @@ namespace Plukliste.Classes.FileHandling.Read
             //Pluklist? plukliste = JsonSerializer.Deserialize<Pluklist?>(file);
             //file.Close();
             //return plukliste;
-
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
             var file = File.ReadAllText(files[index]);
-            Pluklist? plukliste = JsonSerializer.Deserialize<Pluklist?>(file);
+            Pluklist? plukliste = JsonSerializer.Deserialize<Pluklist?>(file, options);
             return plukliste;
-
         }
     }
 }

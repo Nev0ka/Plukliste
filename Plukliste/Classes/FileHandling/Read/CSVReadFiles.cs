@@ -34,7 +34,7 @@ namespace Plukliste.Classes.FileHandling.Read
                 {
                     item.Type = ItemType.Fysisk;
                 }
-                item.Name = splittedLine[2];
+                item.Title = splittedLine[2];
                 item.Amount = Convert.ToInt32(splittedLine[3]);
                 plukliste.AddItem(item);
             }

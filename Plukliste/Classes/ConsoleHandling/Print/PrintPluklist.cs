@@ -19,7 +19,7 @@ namespace Plukliste.Classes.ConsoleHandling.Print
                 foreach (var item in plukliste.Lines)
                 {
                     var color = Console.ForegroundColor;
-                    string productString = $"{item.Amount,-7}{item.Type,-9}{item.ProductID,-20}{item.Name}";
+                    string productString = $"{item.Amount,-7}{item.Type,-9}{item.ProductID,-20}{item.Title}";
                     if(handleDB.GetContent == null)
                     {
                         Console.WriteLine("Failed: Databse is empty");

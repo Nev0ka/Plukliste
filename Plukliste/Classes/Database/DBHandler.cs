@@ -8,7 +8,8 @@ namespace Plukliste.Classes.Database
         private InventoryContent Content = new();
         List<InventoryContent> ContentList;
 
-        private static string connectString = "Server=192.168.52.128;" + "Database=InventoryApp;" + "Uid=sa;" + "Pwd=1234";
+        //private static string connectString = "Server=192.168.52.128;" + "Database=InventoryApp;" + "Uid=sa;" + "Pwd=1234";
+        private static string connectString = "Server=(localdb)\\mssqllocaldb;Database=InventoryApp;Trusted_Connection=True;MultipleActiveResultSets=true";
 
         public void updateDB(int id, int stock, string productName, string productId)
         {

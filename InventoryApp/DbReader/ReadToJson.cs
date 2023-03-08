@@ -19,13 +19,13 @@ namespace InventoryApp.DbReader
             public string? Name { get; set; }
             public string? Forsendelse { get; set; }
             public string? Adresse { get; set; }
-            public List<ItemsJson>? Items { get; set; }
+            public List<ItemsJson> Lines { get; set; }
         }
 
         public class ItemsJson
         {
-            public string? ProductId { get; set; }
-            public string? ProductName { get; set; }
+            public string? ProductID { get; set; }
+            public string? Title { get; set; }
             public int Amount { get; set; }
             public ItemType Type { get; set; }
         }
@@ -33,15 +33,15 @@ namespace InventoryApp.DbReader
         public void JsonConverter(PluklistContent content)
         {
             PluklistJson pluklistJson = new();
-            pluklistJson.Items = new(); 
+            List<ItemsJson> itemList = new();
             pluklistJson.Name = content.Name;
             pluklistJson.Forsendelse = content.Forsendelse;
             pluklistJson.Adresse = content.Adresse;
             foreach (var product in content.Items)
             {
                 ItemsJson itemsJson = new();
-                itemsJson.ProductId = product.ProductID;
-                itemsJson.ProductName = product.ProductName;
+                itemsJson.ProductID = product.ProductID;
+                itemsJson.Title = product.ProductName;
                 itemsJson.Amount = product.Amount;
                 //itemsJson.Type = product.Type;
                 ItemType type;
@@ -58,8 +58,9 @@ namespace InventoryApp.DbReader
                         break;
                 }
                 itemsJson.Type = type;
-                pluklistJson.Items.Add(itemsJson);
+               itemList.Add(itemsJson);
             }
+            pluklistJson.Lines = itemList;
 
             JsonSerializerOptions options = new JsonSerializerOptions
             {

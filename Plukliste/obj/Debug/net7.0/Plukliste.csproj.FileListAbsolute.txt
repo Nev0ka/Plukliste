@@ -38,3 +38,12 @@ C:\Users\HFGF\Desktop\Plukliste\Plukliste\obj\Debug\net7.0\refint\Plukliste.dll
 C:\Users\HFGF\Desktop\Plukliste\Plukliste\obj\Debug\net7.0\Plukliste.pdb
 C:\Users\HFGF\Desktop\Plukliste\Plukliste\obj\Debug\net7.0\Plukliste.genruntimeconfig.cache
 C:\Users\HFGF\Desktop\Plukliste\Plukliste\obj\Debug\net7.0\ref\Plukliste.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Configuration.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\HFGF\Desktop\Plukliste\Plukliste\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
